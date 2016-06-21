@@ -49,7 +49,13 @@ function capitalizeFirstLetter(string) {
 function chanceOfPunctuation() {
   if (randoRange(0, 100) < 15) {
     output = output.trimRight();
-    output += ". ";
+    if (randoRange(0, 100) < 25) {
+      output += "! ";
+    } else if (randoRange(0, 100) < 25) {
+      output += "? ";
+    } else {
+      output += ". ";
+    }
     punctuationFlag = true;
   }
 }
