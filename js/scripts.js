@@ -35,11 +35,17 @@ function loadThemeMenu() {
 }
 
 $('#themes').change(function() {
-  $('#themeDescription p').text(stockBanks[$('#themes').val()].description);
+  if (!isNaN(parseInt($('#themes').val()))) {
+    $('#themeDescription p').text(stockBanks[$('#themes').val()].description);
+  } else {
+    $('#themeDescription p').text('Sweet user bank, breh!');
+  }
 });
 
 $('#oneWord').on('click', function() {
+  if (!isNaN(parseInt($('#themes').val()))) {
   output = stockBanks[$('#themes').val()].bank[Math.floor(Math.random() * stockBanks[$('#themes').val()].bank.length)];
+  }
   $('#ipsumOutput').html('<h3>' + output + '</h3>');
 });
 
@@ -99,6 +105,7 @@ function ipsum(arrIndex, paragraphs) {
       chanceOfPunctuation();
     }
     output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+    output += ".</p>";
     totalOutput += output;
   }
   return totalOutput;
@@ -106,7 +113,7 @@ function ipsum(arrIndex, paragraphs) {
 
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
-  if (typeof parseInt($('#themes').val()) === "number") {
+  if (!isNaN(parseInt($('#themes').val()))) {
   $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
   }
 });
