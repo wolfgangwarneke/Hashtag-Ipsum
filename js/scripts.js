@@ -121,6 +121,7 @@ function updateUserLoader() {
 
 $('#userLoader').submit(function(event) {
   event.preventDefault();
+  $('#stagingArea ul').empty();
   var userBankAccessKey = $('#userLoaderPicker').val();
   var currentBank = userBanks[userBankAccessKey];
   $('#nameBank').val(currentBank.name);
@@ -146,4 +147,6 @@ $('#saveUserBank').submit(function(event) {
   userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), "no description, user bank");
   $('#nameBank').val('');
   updateUserLoader();
+  $('#stagingArea ul').empty();
+  currentUserWordChoice = [];
 });
