@@ -28,4 +28,9 @@ $('#themes').change(function() {
   $('#themeDescription p').text(window[$('#themes').val()].description);
 });
 
+$('#oneWord').on('click', function() {
+  var output = window[$('#themes').val()].bank[Math.floor(Math.random() * window[$('#themes').val()].bank.length)];
+  $('#ipsumOutput').html('<h3>' + output + '</h3>');
+});
+
 loadThemeMenu();
