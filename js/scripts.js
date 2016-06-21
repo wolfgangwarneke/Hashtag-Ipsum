@@ -107,6 +107,7 @@ $('#ipsumForm').submit(function(event) {
 ///USER GENERATOR
 /////////////////
 var currentUserWordChoice = [];
+var userBanks = {};
 
 $('#userGenerator').submit(function(event) {
   event.preventDefault();
@@ -119,5 +120,6 @@ $('#userGenerator').submit(function(event) {
 
 $('#saveUserBank').submit(function(event) {
   event.preventDefault();
-  $('#ipsumOutput').html();
+  var userBankName = $('#nameBank').val();
+  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), "no description, user bank");
 });
