@@ -1,5 +1,8 @@
 var stockBanks = [];
 var output;
+var currentUserWordChoice = [];
+var userBanks = {};
+var punctuationFlag = false;
 
 function Theme(name, words, description) {
   this.bankIndex = stockBanks.length;
@@ -13,12 +16,18 @@ stockBanks.push(theme1);
 
 var theme2 = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
 stockBanks.push(theme2);
-
+var themeList = "";
 
 function loadThemeMenu() {
   $('#themes').empty();
-  var themeList = "";
+  themeList = "";
   themeList += "<option selected disabled>Load an Ipsum</option>";
+  //user bank
+  Object.keys(userBanks).forEach(function(userBankKey) {
+    themeList += "<option val='" + userBanks[userBankKey].name + "'>" + userBanks[userBankKey].name + "</option>";
+  });
+
+  //user bank end
   for (i = 0; i < stockBanks.length; i++) {
     themeList += "<option value='" + stockBanks[i].bankIndex + "'>" + stockBanks[i].name + "</option>";
   }
@@ -40,7 +49,7 @@ function randoRange(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-var punctuationFlag = false;
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -106,8 +115,7 @@ $('#ipsumForm').submit(function(event) {
 /////////////////
 ///USER GENERATOR
 /////////////////
-var currentUserWordChoice = [];
-var userBanks = {};
+
 
 function updateUserLoader() {
   var userOptionList = "";
@@ -147,6 +155,7 @@ $('#saveUserBank').submit(function(event) {
   userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), "no description, user bank");
   $('#nameBank').val('');
   updateUserLoader();
+  loadThemeMenu();
   $('#stagingArea ul').empty();
   currentUserWordChoice = [];
 });
