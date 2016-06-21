@@ -35,11 +35,15 @@ $('#oneWord').on('click', function() {
 
 loadThemeMenu();
 
+function randoRange(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min
+}
+
 function ipsum(arrIndex, paragraphs) {
   var totalOutput = "";
   for (i = 0; i < paragraphs; i++) {
     output = "<p>";
-    while (output.length < 360) {
+    while (output.length < randoRange(320, 550)) {
       output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
       output += " ";
     }
