@@ -60,6 +60,13 @@ function chanceOfPunctuation() {
   }
 }
 
+function chanceOfFillerWord(percentage) {
+  if (randoRange(0, 100) < percentage) {
+    var fillerWords = ['the', 'or', 'and', 'what'];
+    output += " " + fillerWords[Math.floor(Math.random() * fillerWords.length)];
+  }
+}
+
 function ipsum(arrIndex, paragraphs) {
   var totalOutput = "";
   var i;
@@ -76,6 +83,7 @@ function ipsum(arrIndex, paragraphs) {
         firstWord = false;
       } else {
         output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+        chanceOfFillerWord(23);
       }
     }
       output += " ";
