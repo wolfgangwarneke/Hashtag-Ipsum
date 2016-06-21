@@ -11,7 +11,11 @@ function Theme(name, words, description) {
   this.description = description;
 }
 
-var theme1 = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired, winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
+Theme.prototype.randBankIndex = function() {
+  return this.bank[Math.floor(Math.random() * this.bank.length)];
+}
+
+var theme1 = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
 stockBanks.push(theme1);
 
 var theme2 = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
@@ -44,7 +48,7 @@ $('#themes').change(function() {
 
 $('#oneWord').on('click', function() {
   if (!isNaN(parseInt($('#themes').val()))) {
-  output = stockBanks[$('#themes').val()].bank[Math.floor(Math.random() * stockBanks[$('#themes').val()].bank.length)];
+  output = stockBanks[$('#themes').val()].randBankIndex();
   }
   $('#ipsumOutput').html('<h3>' + output + '</h3>');
 });
@@ -90,21 +94,21 @@ function ipsum(arrIndex, paragraphs) {
     var firstWord = true;
     while (output.length < randoRange(320, 550)) {
       if (punctuationFlag) {
-      output += capitalizeFirstLetter(stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)]);
+      output += capitalizeFirstLetter(stockBanks[arrIndex].randBankIndex());
       punctuationFlag = false;
     } else {
       if (firstWord) {
-        output += capitalizeFirstLetter(stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)]);
+        output += capitalizeFirstLetter(stockBanks[arrIndex].randBankIndex());
         firstWord = false;
       } else {
-        output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+        output += stockBanks[arrIndex].randBankIndex();
         chanceOfFillerWord(23);
       }
     }
       output += " ";
       chanceOfPunctuation();
     }
-    output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+    output += stockBanks[arrIndex].randBankIndex();
     output += ".</p>";
     totalOutput += output;
   }
