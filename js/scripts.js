@@ -56,14 +56,21 @@ function chanceOfPunctuation() {
 
 function ipsum(arrIndex, paragraphs) {
   var totalOutput = "";
+  var i;
   for (i = 0; i < paragraphs; i++) {
     output = "<p>";
+    var firstWord = true;
     while (output.length < randoRange(320, 550)) {
       if (punctuationFlag) {
       output += capitalizeFirstLetter(stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)]);
       punctuationFlag = false;
     } else {
-      output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+      if (firstWord) {
+        output += capitalizeFirstLetter(stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)]);
+        firstWord = false;
+      } else {
+        output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+      }
     }
       output += " ";
       chanceOfPunctuation();
