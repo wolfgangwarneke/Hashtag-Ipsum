@@ -106,7 +106,9 @@ function ipsum(arrIndex, paragraphs) {
 
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
+  if (typeof parseInt($('#themes').val()) === "number") {
   $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
+  }
 });
 
 
