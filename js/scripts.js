@@ -1,4 +1,5 @@
 var stockBanks = [];
+var output;
 
 function Theme(name, words, description) {
   this.bankIndex = stockBanks.length;
@@ -29,7 +30,7 @@ $('#themes').change(function() {
 });
 
 $('#oneWord').on('click', function() {
-  var output = stockBanks[$('#themes').val()].bank[Math.floor(Math.random() * stockBanks[$('#themes').val()].bank.length)];
+  output = stockBanks[$('#themes').val()].bank[Math.floor(Math.random() * stockBanks[$('#themes').val()].bank.length)];
   $('#ipsumOutput').html('<h3>' + output + '</h3>');
 });
 
@@ -39,6 +40,13 @@ function randoRange(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
+function chanceOfPunctuation() {
+  if (randoRange(0, 100) < 15) {
+    output = output.trimRight();
+    output += ". ";
+  }
+}
+
 function ipsum(arrIndex, paragraphs) {
   var totalOutput = "";
   for (i = 0; i < paragraphs; i++) {
@@ -46,6 +54,7 @@ function ipsum(arrIndex, paragraphs) {
     while (output.length < randoRange(320, 550)) {
       output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
       output += " ";
+      chanceOfPunctuation();
     }
     output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
     totalOutput += output;
