@@ -40,10 +40,17 @@ function randoRange(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
+var punctuationFlag = false;
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function chanceOfPunctuation() {
   if (randoRange(0, 100) < 15) {
     output = output.trimRight();
     output += ". ";
+    punctuationFlag = true;
   }
 }
 
@@ -52,7 +59,12 @@ function ipsum(arrIndex, paragraphs) {
   for (i = 0; i < paragraphs; i++) {
     output = "<p>";
     while (output.length < randoRange(320, 550)) {
+      if (punctuationFlag) {
+      output += capitalizeFirstLetter(stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)]);
+      punctuationFlag = false;
+    } else {
       output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+    }
       output += " ";
       chanceOfPunctuation();
     }
