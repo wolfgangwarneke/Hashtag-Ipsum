@@ -6,8 +6,29 @@
     <link href="css/style.css" rel="stylesheet" type="text/CSS">
   </head>
   <body>
+    <div id="ipsumGenerator">
+      <div id="themeDescription">
+        <p>
+        </p>
+      </div>
+      <form id="ipsumForm">
+        <label for="theme">Themes:</label>
+        <select id="themes" name="theme">
+          
+        </select>
+        <button id="oneWord" type="button">Just one word</button>
+        <hr class="bottomMargin">
+        <label for="paragraphs">Paragraphs:</label>
+        <input type="number" min="1" id="paragraphs" name="paragraphs"><br>
+        <input type="submit" value="Get Ipsum!">
+      </form>
+      <div id="ipsumOutput">
+      </div>
+    </div>
 
 
+    <div id="userGenerator">
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
