@@ -109,6 +109,17 @@ $('#ipsumForm').submit(function(event) {
 var currentUserWordChoice = [];
 var userBanks = {};
 
+function updateUserLoader() {
+  var userOptionList = "";
+  userOptionList += "<option selected disabled>Load yer Ipsum</option>";
+  Object.keys(userBanks).forEach(function(userBankKey) {
+    userOptionList += "<option val='" + userBanks[userBankKey].name + "'>" + userBanks[userBankKey].name + "</option>";
+  });
+  $('#userLoaderPicker').html(userOptionList);
+}
+
+
+
 $('#userGenerator').submit(function(event) {
   event.preventDefault();
   if ($('#wordAdd').val() !== '') {
@@ -122,4 +133,6 @@ $('#saveUserBank').submit(function(event) {
   event.preventDefault();
   var userBankName = $('#nameBank').val();
   userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), "no description, user bank");
+  $('#nameBank').val('');
+  updateUserLoader();
 });
