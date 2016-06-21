@@ -34,3 +34,22 @@ $('#oneWord').on('click', function() {
 });
 
 loadThemeMenu();
+
+function ipsum(arrIndex, paragraphs) {
+  var totalOutput = "";
+  for (i = 0; i < paragraphs; i++) {
+    output = "<p>";
+    while (output.length < 360) {
+      output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+      output += " ";
+    }
+    output += stockBanks[arrIndex].bank[Math.floor(Math.random() * stockBanks[arrIndex].bank.length)];
+    totalOutput += output;
+  }
+  return totalOutput;
+}
+
+$('#ipsumForm').submit(function(event) {
+  event.preventDefault();
+  $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
+});
