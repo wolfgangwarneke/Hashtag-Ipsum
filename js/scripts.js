@@ -119,8 +119,19 @@ function updateUserLoader() {
 }
 
 
+$('#userLoader').submit(function(event) {
+  event.preventDefault();
+  var userBankAccessKey = $('#userLoaderPicker').val();
+  var currentBank = userBanks[userBankAccessKey];
+  $('#nameBank').val(currentBank.name);
+  $('#stagingArea ul').empty();
+  currentBank.bank.forEach(function(lexicalUnit) {
+    $('#stagingArea ul').append("<li>" + lexicalUnit + "</li>");
+  });
+});
 
-$('#userGenerator').submit(function(event) {
+
+$('#addWords').submit(function(event) {
   event.preventDefault();
   if ($('#wordAdd').val() !== '') {
   $('#stagingArea ul').append("<li>" + $('#wordAdd').val() + "</li>");
