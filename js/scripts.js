@@ -8,7 +8,7 @@ function Theme(name, words, description) {
   this.description = description;
 }
 
-var theme1 = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Stret,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge', 'Make Lorem Ipsum Great Again.');
+var theme1 = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired, winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
 stockBanks.push(theme1);
 
 var theme2 = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
@@ -98,4 +98,26 @@ function ipsum(arrIndex, paragraphs) {
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
   $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
+});
+
+
+
+
+/////////////////
+///USER GENERATOR
+/////////////////
+var currentUserWordChoice = [];
+
+$('#userGenerator').submit(function(event) {
+  event.preventDefault();
+  if ($('#wordAdd').val() !== '') {
+  $('#stagingArea ul').append("<li>" + $('#wordAdd').val() + "</li>");
+  currentUserWordChoice.push($('#wordAdd').val());
+  }
+  $('#wordAdd').val('')
+});
+
+$('#saveUserBank').submit(function(event) {
+  event.preventDefault();
+  $('#ipsumOutput').html();
 });
