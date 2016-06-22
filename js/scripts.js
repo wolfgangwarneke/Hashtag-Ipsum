@@ -43,11 +43,11 @@ themeifyStoredBanks();
 /////////////////////////////////////////////////
 ////////////// Stock Ipsum Banks ////////////////
 
-stockBanks['TrumpSum'] = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
+stockBanks['TrumpSum'] = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning,Crooked Hillary,beautiful,apocalyptic,tremendous,Lyin\' Ted,Little Marco', 'Build your own wall of filler text');
 
-stockBanks['YeezIpsum'] = new Theme('YeezIpsum', 'Kanye West,Yeezus,the life of Pablo,create art,dark twisted fantasy,my beautiful,Kardashians,Kim,watch the throne,emotional over fonts,Wicked is my story,fur pillows,hobo couture,letherpants,mic drop,king,lamborgini mercy,bank-rupt,motorcycle', 'The Ipsum of a Generation.');
+stockBanks['YeezIpsum'] = new Theme('YeezIpsum', 'Kanye West,Yeezus,the life of Pablo,create art,dark twisted fantasy,my beautiful,Kardashians,Kim,watch the throne,emotional over fonts,Wicked is my story,fur pillows,hobo couture,letherpants,mic drop,king,lamborgini mercy,bank-rupt,motorcycle,Imma let you finish', 'The Ipsum of a Generation');
 
-stockBanks['WinningIpsum'] = new Theme('WinningIpsum', 'Charlie Sheen,winning,I am on a drug called Charlie Sheen,rock star from Mars,rolling out Magic,bro,sober,dying is for fools,I\'m not dangerous insane,boom,Vatican assassin warlocks,seven gram rocks,party,partying,drinking,breakfast,heavy drinking,bi-winning,duh,I\'m still alive', 'Boom. Winning Ipsum. Duh!');
+stockBanks['Bi-Winning-Ipsum'] = new Theme('Bi-Winning-Ipsum', 'Charlie Sheen,winning,I am on a drug called Charlie Sheen,rock star from Mars,rolling out Magic,bro,sober,dying is for fools,I\'m not dangerous insane,boom,Vatican assassin warlocks,seven gram rocks,party,partying,drinking,breakfast,heavy drinking,bi-winning,duh,I\'m still alive,breakfast martini', 'Boom. Winning Ipsum. Duh!');
 /////////////////////////////
 /////////////////////////////
 
@@ -160,8 +160,14 @@ function themeIdValue() {
 }
 
 $('#themes').change(function() {
-  $('#themeDescription p').text(bothBanks()[themeIdValue()].description);
-  $('body').attr('id', stockBanks[themeIdValue()].name)
+  $('#themeDescription').text(bothBanks()[themeIdValue()].description);
+  $('#nameDisplay').text(bothBanks()[themeIdValue()].name);
+  $('body').attr('id', bothBanks()[themeIdValue()].name);
+  if (bothBanks()[themeIdValue()].name === 'YeezIpsum') {
+    $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.jpg">');
+  } else {
+    $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.png">');
+  }
 });
 
 $('#oneWord').on('click', function() {

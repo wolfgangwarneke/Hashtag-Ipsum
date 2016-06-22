@@ -57,6 +57,36 @@ body {
   line-height: 1.25;
   color: #2f2f2f;
 }
+
+#nameDisplay {
+	font-family: 'Bungee Shade', sans-serif;
+	text-align: center;
+  font-size: 100px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+#themeDescription {
+	font-family: 'Bungee', cursive;
+	text-align: center;
+	font-size: 35px;
+	margin-top:10px;
+	margin-bottom: 30px;
+}
+
+.header-background {
+  margin: -15px;
+	background: black;
+}
+
+h3.column-title{
+  font-size: 48px;
+  color: white;
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
 #TrumpSum h1 {
 	font-family: 'Bungee Shade', sans-serif;
 }
@@ -70,8 +100,58 @@ body {
 	background-color: #fcecbe;
 	padding: 7px 10px;
 }
-#BioDipsum {
-  font-family: 'Gravitas One', cursive;
+#TrumpSum .header-background{
+	background: #ff533c;
+}
+#TrumpSum h3.column-title{
+  font-size: 48px;
+  color: rgb(252, 236, 190);
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+#TrumpSum #ipsumOutput h3 {
+  color: rgb(214, 115, 83);
+}
+#Bi-Winning-Ipsum button {
+	color: #2c4897;
+	border: 1px solid #2c4897;
+	border-radius: 5px;
+	background-color: rgba(127, 160, 255, 0.13);
+	padding: 7px 10px;
+}
+#Bi-Winning-Ipsum h3.column-title{
+  font-size: 48px;
+	color: rgb(243, 206, 178);
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+#Bi-Winning-Ipsum .header-background {
+	background: #2c4897;
+}
+#Bi-Winning-Ipsum #ipsumOutput h3 {
+  color: #2c4897;
+}
+#YeezIpsum button {
+	border: 1px solid #fc3768;
+	color: #fc3768;
+	border-radius: 5px;
+	background-color: rgba(255, 252, 77, 0.28);
+	padding: 7px 10px;
+}
+#YeezIpsum h3.column-title{
+  font-size: 48px;
+  color: rgb(255, 252, 77);
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+#YeezIpsum .header-background {
+	background: #fc3768;
+}
+#YeezIpsum #ipsumOutput h3 {
+  color: #fc3768;
 }
 
 *, *:before, *:after {
@@ -125,11 +205,6 @@ body {
   margin-top: 10px;
 }
 
-.header-background {
-  background: #ff533c;
-  margin: -15px;
-}
-
 
 .container {
   max-width: 1100px;
@@ -145,6 +220,8 @@ selet, input {
 
 label {
   display: block;
+	margin-bottom: 7px;
+	margin-top: 15px;
 }
 
 p {
@@ -162,28 +239,8 @@ p {
 }
 
 .hero img{
-  max-width: 100%;
+  width: 100%;
   margin: -8px;
-}
-h1.home {
-  /*font-family: 'Bungee Shade', cursive;*/
-  text-align: center;
-  font-size: 100px;
-  margin-top: 15px;
-  margin-bottom: 0px;
-}
-h2.tagline {
-  text-align: center;
-  font-size: 35px;
-  margin-top:10px;
-  margin-bottom: 30px;
-}
-h3.column-title{
-  font-size: 48px;
-  color: rgb(252, 236, 190);
-  margin-bottom: 30px;
-  padding: 10px;
-  text-align: center;
 }
 
 #ipsumOutput {
@@ -193,7 +250,6 @@ h3.column-title{
 #ipsumOutput h3 {
   text-align: center;
   font-size: 2em;
-  color: rgb(214, 115, 83);
 }
 
 #oneWord {
