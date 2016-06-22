@@ -151,6 +151,7 @@ $('#userLoader').submit(function(event) {
   $('#stagingArea ul').empty();
   currentBank.bank.forEach(function(lexicalUnit) {
     $('#stagingArea ul').append("<li>" + lexicalUnit + "</li>");
+    currentUserWordChoice.push(lexicalUnit);
   });
 });
 
@@ -173,4 +174,9 @@ $('#saveUserBank').submit(function(event) {
   loadThemeMenu();
   $('#stagingArea ul').empty();
   currentUserWordChoice = [];
+});
+
+$('#stagingArea ul').on('click', 'li', function() {
+  currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
+  $(this).remove();
 });
