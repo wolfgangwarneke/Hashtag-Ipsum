@@ -130,9 +130,9 @@ $('#ipsumForm').submit(function(event) {
 });
 
 
-/////////////////
+
 ///USER GENERATOR
-/////////////////
+
 
 function updateUserLoader() {
   var userOptionList = "";
