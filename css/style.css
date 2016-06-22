@@ -1,6 +1,187 @@
+/*browser reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*end reset*/
+
+
+
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #2f2f2f;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Bungee', cursive;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}*/
+/*.row:after {
+  clear: both;
+}*/
+/*.col-6 {
+  width: 50%;
+  float:left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.col-12 {
+  width: 100%;
+  float:left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}*/
+
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  padding: 5px;
+  width: 500px;
+
+  margin-top: 10px;
+}
+
+.header-background {
+  background: #ff533c;
+  margin: -15px;
+}
+
+
+.container {
+  max-width: 1100px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+selet, input {
+  font-size: 18px;
+}
+
+label {
+  display: block;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+#themeDescription p {
+  font-size: 1.3em;
+  font-family: 'Bungee', cursive;
+}
+
+#ipsumGenerator, #userGenerator {
+  border: 1px solid #d6d6d6;
+ padding: 15px;
+}
+
+.hero img{
+  max-width: 100%;
+  margin: -8px;
+}
+h1.home {
+  font-family: 'Bungee Shade', cursive;
   text-align: center;
-  padding: 20px
+  font-size: 100px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+h2.tagline {
+  text-align: center;
+  font-size: 35px;
+  margin-top:10px;
+  margin-bottom: 30px;
+}
+h3.column-title{
+  font-size: 48px;
+  color: rgb(252, 236, 190);
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+#ipsumOutput {
+  margin-top: 20px;
+}
+
+#ipsumOutput h3 {
+  text-align: center;
+  font-size: 2em;
+  color: rgb(214, 115, 83);
 }
 
 #oneWord {
@@ -10,3 +191,10 @@ body {
 .bottomMargin {
   margin-bottom: 30px;
 }
+
+
+
+/*font-family: 'Bungee Shade', cursive;
+font-family: 'Bungee', cursive;
+font-family: 'Gravitas One', cursive;
+font-family: 'Alfa Slab One', cursive;*/

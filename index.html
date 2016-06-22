@@ -2,58 +2,76 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Ego Ipsum</title>
     <link href="css/style.css" rel="stylesheet" type="text/CSS">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bungee|Bungee+Shade|Gravitas+One|Open+Sans" rel="stylesheet">
   </head>
   <body>
-    <div id="ipsumGenerator">
-      <h1>Main content</h1>
-      <div id="themeDescription">
-        <p>
-        </p>
+    <div class="container">
+      <div class="hero">
+        <img src="img/Trump-TinyHands-hero.png" alt="Donald Trump giving the thumbs up">
       </div>
-      <form id="ipsumForm">
-        <label for="theme">Themes:</label>
-        <select id="themes" name="theme">
-
-        </select>
-        <button id="oneWord" type="button">Just one word</button>
-        <br class="bottomMargin">
-        <label for="paragraphs">Paragraphs:</label>
-        <input type="number" min="1" id="paragraphs" name="paragraphs"><br>
-        <input type="submit" value="Get Ipsum!">
-      </form>
-      <div id="ipsumOutput">
+      <h1 class="home">Trump'Sum</h1>
+      <h2 class="tagline">Build your own wall of filler text</h2>
+      <div class="flex-container">
+        <div class="flex-item">
+          <div id="ipsumGenerator">
+            <div class="header-background">
+              <h3 class="column-title">Choose A Theme</h3>
+            </div>
+            <div id="themeDescription">
+              <p>
+              </p>
+            </div>
+            <form id="ipsumForm">
+              <label for="theme">Themes:</label>
+              <select id="themes" name="theme">
+              </select>
+              <label for="oneWord">One Word/Phrase:</label>
+              <button id="oneWord" type="button">Get Ipsum!</button>
+              <label for="paragraphs">Paragraphs:</label>
+              <input type="number" min="1" id="paragraphs" name="paragraphs"><br>
+              <input type="submit" value="Get Ipsum!">
+            </form>
+          </div>
+        </div>
+        <div class="flex-item">
+          <div id="userGenerator">
+            <div class="header-background">
+              <h3 class="column-title">Create Your Own</h3>
+            </div>
+            <form id="userLoader">
+              <label for="userLoaderPicker">Load yer bank</label>
+              <select name="userLoaderPicker" id="userLoaderPicker">
+                <option selected disabled>Load yer Ipsum</option>
+              </select>
+              <button type="submit">LOAD IT</button>
+            </form>
+            <br>
+            <form id="addWords">
+              <label for="wordAdd">Type here to add to your Ipsum bank!</label>
+              <input type="text" name="wordAdd" id="wordAdd">
+              <button type="submit">Add Word (or phrase)</button>
+            </form>
+            <div id="stagingArea">
+              <ul>
+              </ul>
+            </div>
+            <form id="saveUserBank">
+              <label for="nameBank">Choose a name for your Ipsum Generator</label>
+              <input type="text" name="nameBank" id="nameBank">
+              <button type="submit">Save My Ipsum!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div id="ipsumOutput">
+          </div>
+        </div>
       </div>
     </div>
-
-<hr>
-    <div id="userGenerator">
-      <h1>User area</h1>
-      <form id="userLoader">
-        <label for="userLoaderPicker">Load yer bank</label>
-        <select name="userLoaderPicker" id="userLoaderPicker">
-          <option selected disabled>Load yer Ipsum</option>
-        </select>
-        <button type="submit">LOAD IT</button>
-      </form>
-      <br>
-      <form id="addWords">
-        <label for="wordAdd">Type here to add to your Ipsum bank!</label>
-        <input type="text" name="wordAdd" id="wordAdd">
-        <button type="submit">Add Word (or phrase)</button>
-      </form>
-      <div id="stagingArea">
-        <ul>
-        </ul>
-      </div>
-      <form id="saveUserBank">
-        <label for="nameBank">Choose a name for your Ipsum Generator</label>
-        <input type="text" name="nameBank" id="nameBank">
-        <button type="submit">Save My Ipsum!</button>
-      </form>
-    </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
   </body>
