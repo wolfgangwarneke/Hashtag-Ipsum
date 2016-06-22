@@ -148,6 +148,10 @@ function ipsum(objKey, paragraphs) {
 //////// *on page load* /////
 
 loadThemeMenu();
+currentBank.bank.forEach(function(lexicalUnit) {
+  $('#stagingArea ul').append("<li>" + lexicalUnit + "</li>");
+  currentUserWordChoice.push(lexicalUnit);
+});
 
 function themeIdValue() {
   return $('#themes').val();
