@@ -33,7 +33,7 @@ function Theme(name, words, description) {
   this.description = description;
 }
 
-Object.prototype.randBankIndex = function() {
+Theme.prototype.randBankIndex = function() {
   return this.bank[Math.floor(Math.random() * this.bank.length)];
 }
 
