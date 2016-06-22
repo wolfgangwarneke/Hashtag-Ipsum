@@ -1,9 +1,44 @@
 var stockBanks = {};
 var output;
-themeList = ''
+var themeList = '';
 var currentUserWordChoice = [];
 var userBanks = {};
 var punctuationFlag = false;
+
+
+////// COOKIE ///////
+function writeCookie() {
+  var d = new Date();
+  d.setTime(d.getTime() + (1234*24*60*60*1000));//firstvalueisdays
+  var expires = "expires="+d.toUTCString();
+  document.cookie = "stored=" + JSON.stringify(userBanks) + ";" + expires;
+}
+function readCookie() {
+
+  var name = "stored=";
+  var ca = document.cookie.split(';');
+  for (i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      userBanks = JSON.parse(c.substring(name.length, c.length));
+    }
+  }
+}
+
+function themeifyStoredBanks() {
+  for (var key in userBanks) {
+    userBanks[key] = new Theme(userBanks[key].name, userBanks[key].bank.join(), userBanks[key].description);
+  }
+}
+
+readCookie();
+themeifyStoredBanks();
+
+//////////////
+
 
 /////////////////////////////////////////////////
 ////////////// Stock Ipsum Banks ////////////////
@@ -118,6 +153,7 @@ function ipsum(objKey, paragraphs) {
 //////// *on page load* /////
 
 loadThemeMenu();
+updateUserLoader();
 
 function themeIdValue() {
   return $('#themes').val();
@@ -156,6 +192,7 @@ $('#saveUserBank').submit(function(event) {
   $('#nameBank, #bankDescription').val('');
   updateUserLoader();
   loadThemeMenu();
+  writeCookie();
   $('#stagingArea ul').empty();
   currentUserWordChoice = [];
 });
@@ -183,30 +220,3 @@ $('#stagingArea ul').on('click', 'li', function() {
   currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
   $(this).remove();
 });
-
-////// COOKIE ///////
-function writeCookie() {
-  document.cookie = "stored=" + JSON.stringify(userBanks);
-}
-function readCookie() {
-  var name = "stored=";
-  var ca = document.cookie.split(';');
-  for (i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) === 0) {
-      userBanks = JSON.parse(c.substring(name.length, c.length));
-    }
-  }
-}
-
-function themeifyStoredBanks() {
-  for (var key in userBanks) {
-    userBanks[key] = new Theme(userBanks[key].name, userBanks[key].bank.join(), userBanks[key].description);
-  }
-}
-
-readCookie();
-themeifyStoredBanks();
