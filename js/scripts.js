@@ -8,9 +8,13 @@ var punctuationFlag = false;
 
 ////// COOKIE ///////
 function writeCookie() {
-  document.cookie = "stored=" + JSON.stringify(userBanks);
+  var d = new Date();
+  d.setTime(d.getTime() + (1234*24*60*60*1000));//firstvalueisdays
+  var expires = "expires="+d.toUTCString();
+  document.cookie = "stored=" + JSON.stringify(userBanks) + ";" + expires;
 }
 function readCookie() {
+
   var name = "stored=";
   var ca = document.cookie.split(';');
   for (i = 0; i < ca.length; i++) {
