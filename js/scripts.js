@@ -1,6 +1,6 @@
 var stockBanks = {};
 var output;
-themeList = ''
+var themeList = '';
 var currentUserWordChoice = [];
 var userBanks = {};
 var punctuationFlag = false;
