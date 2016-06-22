@@ -1,6 +1,6 @@
 var stockBanks = {};
-// var themeList = "";
 var output;
+themeList = ''
 var currentUserWordChoice = [];
 var userBanks = {};
 var punctuationFlag = false;
@@ -33,7 +33,7 @@ function Theme(name, words, description) {
   this.description = description;
 }
 
-Theme.prototype.randBankIndex = function() {
+Object.prototype.randBankIndex = function() {
   return this.bank[Math.floor(Math.random() * this.bank.length)];
 }
 
@@ -83,7 +83,6 @@ function chanceOfFillerWord(percentage) {
 function ipsum(objKey, paragraphs) {
   var bothIpsumBanks = bothBanks();
   var totalOutput = "";
-  // var i;
   for (i = 0; i < paragraphs; i++) {
     output = "<p>";
     var firstWord = true;
@@ -136,11 +135,24 @@ $('#ipsumForm').submit(function(event) {
 ///USER GENERATOR
 
 function updateUserLoader() {
-  var themeList = "<option selected disabled>Load yer Ipsum</option>";
-  addKeysToThemelist(userBanks);
-  $('#userLoaderPicker').html(themeList);
+  var userOptionList = '';
+  userOptionList = "<option selected disabled>Load yer Ipsum</option>";
+  Object.keys(userBanks).forEach(function(userBankKey) {
+    userOptionList += "<option val='" + userBanks[userBankKey].name + "'>" + userBanks[userBankKey].name + "</option>";
+  });
+  $('#userLoaderPicker').html(userOptionList);
 }
-
+$('#saveUserBank').submit(function(event) {
+  event.preventDefault();
+  var userBankDescription = $('#bankDescription').val();
+  var userBankName = $('#nameBank').val();
+  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), userBankDescription);
+  $('#nameBank, #bankDescription').val('');
+  updateUserLoader();
+  loadThemeMenu();
+  $('#stagingArea ul').empty();
+  currentUserWordChoice = [];
+});
 $('#userLoader').submit(function(event) {
   event.preventDefault();
   $('#stagingArea ul').empty();
@@ -153,27 +165,14 @@ $('#userLoader').submit(function(event) {
     currentUserWordChoice.push(lexicalUnit);
   });
 });
-
 $('#addWords').submit(function(event) {
   event.preventDefault();
   if ($('#wordAdd').val() !== '') {
   $('#stagingArea ul').append("<li>" + $('#wordAdd').val() + "</li>");
   currentUserWordChoice.push($('#wordAdd').val());
   }
-  $('#wordAdd').val('')
+  $('#wordAdd').val('');
 });
-
-$('#saveUserBank').submit(function(event) {
-  event.preventDefault();
-  var userBankName = $('#nameBank').val();
-  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), "no description, user bank");
-  $('#nameBank').val('');
-  updateUserLoader();
-  loadThemeMenu();
-  $('#stagingArea ul').empty();
-  currentUserWordChoice = [];
-});
-
 $('#stagingArea ul').on('click', 'li', function() {
   currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
   $(this).remove();
