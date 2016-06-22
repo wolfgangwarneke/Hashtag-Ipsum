@@ -1,5 +1,5 @@
 var stockBanks = {};
-var themeList = "";
+// var themeList = "";
 var output;
 var currentUserWordChoice = [];
 var userBanks = {};
@@ -37,17 +37,17 @@ Theme.prototype.randBankIndex = function() {
   return this.bank[Math.floor(Math.random() * this.bank.length)];
 }
 
+function addKeysToThemelist(bank) {
+  Object.keys(bank).forEach(function(BankKey) {
+    themeList += "<option val='" + bank[BankKey].name + "'>" + bank[BankKey].name + "</option>";
+  });
+}
+
 function loadThemeMenu() {
   $('#themes').empty();
-  themeList = "";
-  themeList += "<option selected disabled>Load an Ipsum</option>";
-  Object.keys(userBanks).forEach(function(BankKey) {
-    themeList += "<option val='" + userBanks[BankKey].name + "'>" + userBanks[BankKey].name + "</option>";
-  });
-  ///banks seperate, object keys does not guarantee order
-  Object.keys(stockBanks).forEach(function(BankKey) {
-    themeList += "<option val='" + stockBanks[BankKey].name + "'>" + stockBanks[BankKey].name + "</option>";
-  });
+  themeList = "<option selected disabled>Load an Ipsum</option>";
+  addKeysToThemelist(userBanks);
+  addKeysToThemelist(stockBanks);
   $('#themes').append(themeList);
 }
 
@@ -83,7 +83,7 @@ function chanceOfFillerWord(percentage) {
 function ipsum(objKey, paragraphs) {
   var bothIpsumBanks = bothBanks();
   var totalOutput = "";
-  var i;
+  // var i;
   for (i = 0; i < paragraphs; i++) {
     output = "<p>";
     var firstWord = true;
@@ -115,34 +115,31 @@ function ipsum(objKey, paragraphs) {
 
 loadThemeMenu();
 
+function themeIdValue() {
+  return $('#themes').val();
+}
+
 $('#themes').change(function() {
-  $('#themeDescription p').text(bothBanks()[$('#themes').val()].description);
+  $('#themeDescription p').text(bothBanks()[themeIdValue()].description);
 });
 
 $('#oneWord').on('click', function() {
-  output = bothBanks()[$('#themes').val()].randBankIndex();
+  output = bothBanks()[themeIdValue()].randBankIndex();
   $('#ipsumOutput').html('<h3>' + output + '</h3>');
 });
 
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
-  $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
+  $('#ipsumOutput').html(ipsum(themeIdValue(), parseInt($('#paragraphs').val())));
 });
-
-
 
 ///USER GENERATOR
 
-
 function updateUserLoader() {
-  var userOptionList = "";
-  userOptionList += "<option selected disabled>Load yer Ipsum</option>";
-  Object.keys(userBanks).forEach(function(userBankKey) {
-    userOptionList += "<option val='" + userBanks[userBankKey].name + "'>" + userBanks[userBankKey].name + "</option>";
-  });
-  $('#userLoaderPicker').html(userOptionList);
+  var themeList = "<option selected disabled>Load yer Ipsum</option>";
+  addKeysToThemelist(userBanks);
+  $('#userLoaderPicker').html(themeList);
 }
-
 
 $('#userLoader').submit(function(event) {
   event.preventDefault();
@@ -156,7 +153,6 @@ $('#userLoader').submit(function(event) {
     currentUserWordChoice.push(lexicalUnit);
   });
 });
-
 
 $('#addWords').submit(function(event) {
   event.preventDefault();
