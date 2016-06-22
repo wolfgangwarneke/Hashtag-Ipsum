@@ -1,8 +1,19 @@
 var stockBanks = {};
+var themeList = "";
 var output;
 var currentUserWordChoice = [];
 var userBanks = {};
 var punctuationFlag = false;
+
+/////////////////////////////////////////////////
+////////////// Stock Ipsum Banks ////////////////
+
+stockBanks['TrumpSum'] = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
+
+stockBanks['BioDipsum'] = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
+
+/////////////////////////////
+/////////////////////////////
 
 function bothBanks() {
   var bothBanks = {};
@@ -26,12 +37,6 @@ Theme.prototype.randBankIndex = function() {
   return this.bank[Math.floor(Math.random() * this.bank.length)];
 }
 
-stockBanks['TrumpSum'] = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
-
-stockBanks['BioDipsum'] = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
-
-var themeList = "";
-
 function loadThemeMenu() {
   $('#themes').empty();
   themeList = "";
@@ -45,19 +50,6 @@ function loadThemeMenu() {
   });
   $('#themes').append(themeList);
 }
-
-
-
-$('#themes').change(function() {
-  $('#themeDescription p').text(bothBanks()[$('#themes').val()].description);
-});
-
-$('#oneWord').on('click', function() {
-  output = bothBanks()[$('#themes').val()].randBankIndex();
-  $('#ipsumOutput').html('<h3>' + output + '</h3>');
-});
-
-loadThemeMenu();
 
 function randoRange(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
@@ -118,19 +110,29 @@ function ipsum(objKey, paragraphs) {
   return totalOutput;
 }
 
+/////////////////////////////
+//////// *on page load* /////
+
+loadThemeMenu();
+
+$('#themes').change(function() {
+  $('#themeDescription p').text(bothBanks()[$('#themes').val()].description);
+});
+
+$('#oneWord').on('click', function() {
+  output = bothBanks()[$('#themes').val()].randBankIndex();
+  $('#ipsumOutput').html('<h3>' + output + '</h3>');
+});
+
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
   $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
 });
 
 
-
-
 /////////////////
 ///USER GENERATOR
 /////////////////
-
-
 
 function updateUserLoader() {
   var userOptionList = "";
