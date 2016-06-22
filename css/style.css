@@ -276,6 +276,11 @@ p {
 		list-style-position: inside;
 }
 
+#motto {
+	text-align: center;
+	font-family: serif;
+}
+
 /*font-family: 'Bungee Shade', cursive;
 font-family: 'Bungee', cursive;
 font-family: 'Gravitas One', cursive;
