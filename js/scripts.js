@@ -118,7 +118,9 @@ function ipsum(arrIndex, paragraphs) {
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
   if (!isNaN(parseInt($('#themes').val()))) {
-  $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
+    $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
+  } else {
+    $('#ipsumOutput').html(userIpsum($('#themes').val(), parseInt($('#paragraphs').val())));
   }
 });
 
@@ -129,6 +131,34 @@ $('#ipsumForm').submit(function(event) {
 ///USER GENERATOR
 /////////////////
 
+function userIpsum(arrKey, paragraphs) {
+  var totalOutput = "";
+  var i;
+  for (i = 0; i < paragraphs; i++) {
+    output = "<p>";
+    var firstWord = true;
+    while (output.length < randoRange(320, 550)) {
+      if (punctuationFlag) {
+      output += capitalizeFirstLetter(userBanks[arrKey].randBankIndex());
+      punctuationFlag = false;
+    } else {
+      if (firstWord) {
+        output += capitalizeFirstLetter(userBanks[arrKey].randBankIndex());
+        firstWord = false;
+      } else {
+        output += userBanks[arrKey].randBankIndex();
+        chanceOfFillerWord(23);
+      }
+    }
+      output += " ";
+      chanceOfPunctuation();
+    }
+    output += userBanks[arrKey].randBankIndex();
+    output += ".</p>";
+    totalOutput += output;
+  }
+  return totalOutput;
+}
 
 function updateUserLoader() {
   var userOptionList = "";
