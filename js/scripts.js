@@ -1,8 +1,19 @@
-var stockBanks = [];
+var stockBanks = {};
 var output;
 var currentUserWordChoice = [];
 var userBanks = {};
 var punctuationFlag = false;
+
+function bothBanks() {
+  var bothBanks = {};
+  for (var key in stockBanks) {
+    bothBanks[key] = stockBanks[key];
+  }
+  for (var key in userBanks) {
+    bothBanks[key] = userBanks[key];
+  }
+  return bothBanks;
+}
 
 function Theme(name, words, description) {
   this.bankIndex = stockBanks.length;
@@ -15,41 +26,34 @@ Theme.prototype.randBankIndex = function() {
   return this.bank[Math.floor(Math.random() * this.bank.length)];
 }
 
-var theme1 = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
-stockBanks.push(theme1);
+stockBanks['TrumpSum'] = new Theme('TrumpSum', 'Donald Trump,little hands,Wall Street,dump,Manhattan,lorem,hairpiece,"The Apprentice",build the wall,Make America Great Again,Ivanka,diet coke,ban,spray-can orange,rich,eeeyuuuuge,lawyers,Trump Steaks,taco bowl,pizza with a fork,small loan,million dollars,liquidate,you\'re fired,winning, Crooked Hillary', 'Make Lorem Ipsum Great Again.');
 
-var theme2 = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
-stockBanks.push(theme2);
+stockBanks['BioDipsum'] = new Theme('BioDipsum', 'Doyle,Bud,Biodome,paaaarty,buuuuuuuuuddy,babe,beer,save the environment,SHAVE THE POOCHIE POOCHIE! SHAVE THE POOCHIE POOCHIE!,wooooooooooo,WOOOOOO!', 'Greatest film of the nineties. A seminal American classic.');
+
 var themeList = "";
 
 function loadThemeMenu() {
   $('#themes').empty();
   themeList = "";
   themeList += "<option selected disabled>Load an Ipsum</option>";
-  //user bank
-  Object.keys(userBanks).forEach(function(userBankKey) {
-    themeList += "<option val='" + userBanks[userBankKey].name + "'>" + userBanks[userBankKey].name + "</option>";
+  Object.keys(userBanks).forEach(function(BankKey) {
+    themeList += "<option val='" + userBanks[BankKey].name + "'>" + userBanks[BankKey].name + "</option>";
   });
-
-  //user bank end
-  for (i = 0; i < stockBanks.length; i++) {
-    themeList += "<option value='" + stockBanks[i].bankIndex + "'>" + stockBanks[i].name + "</option>";
-  }
+  ///banks seperate, object keys does not guarantee order
+  Object.keys(stockBanks).forEach(function(BankKey) {
+    themeList += "<option val='" + stockBanks[BankKey].name + "'>" + stockBanks[BankKey].name + "</option>";
+  });
   $('#themes').append(themeList);
 }
 
+
+
 $('#themes').change(function() {
-  if (!isNaN(parseInt($('#themes').val()))) {
-    $('#themeDescription p').text(stockBanks[$('#themes').val()].description);
-  } else {
-    $('#themeDescription p').text('Sweet user bank, breh!');
-  }
+  $('#themeDescription p').text(bothBanks()[$('#themes').val()].description);
 });
 
 $('#oneWord').on('click', function() {
-  if (!isNaN(parseInt($('#themes').val()))) {
-  output = stockBanks[$('#themes').val()].randBankIndex();
-  }
+  output = bothBanks()[$('#themes').val()].randBankIndex();
   $('#ipsumOutput').html('<h3>' + output + '</h3>');
 });
 
@@ -58,8 +62,6 @@ loadThemeMenu();
 function randoRange(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
-
-
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -86,7 +88,8 @@ function chanceOfFillerWord(percentage) {
   }
 }
 
-function ipsum(arrIndex, paragraphs) {
+function ipsum(objKey, paragraphs) {
+  var bothIpsumBanks = bothBanks();
   var totalOutput = "";
   var i;
   for (i = 0; i < paragraphs; i++) {
@@ -94,21 +97,21 @@ function ipsum(arrIndex, paragraphs) {
     var firstWord = true;
     while (output.length < randoRange(320, 550)) {
       if (punctuationFlag) {
-      output += capitalizeFirstLetter(stockBanks[arrIndex].randBankIndex());
+      output += capitalizeFirstLetter(bothIpsumBanks[objKey].randBankIndex());
       punctuationFlag = false;
     } else {
       if (firstWord) {
-        output += capitalizeFirstLetter(stockBanks[arrIndex].randBankIndex());
+        output += capitalizeFirstLetter(bothIpsumBanks[objKey].randBankIndex());
         firstWord = false;
       } else {
-        output += stockBanks[arrIndex].randBankIndex();
+        output += bothIpsumBanks[objKey].randBankIndex();
         chanceOfFillerWord(23);
       }
     }
       output += " ";
       chanceOfPunctuation();
     }
-    output += stockBanks[arrIndex].randBankIndex();
+    output += bothIpsumBanks[objKey].randBankIndex();
     output += ".</p>";
     totalOutput += output;
   }
@@ -117,11 +120,7 @@ function ipsum(arrIndex, paragraphs) {
 
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
-  if (!isNaN(parseInt($('#themes').val()))) {
-    $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
-  } else {
-    $('#ipsumOutput').html(userIpsum($('#themes').val(), parseInt($('#paragraphs').val())));
-  }
+  $('#ipsumOutput').html(ipsum($('#themes').val(), parseInt($('#paragraphs').val())));
 });
 
 
@@ -131,34 +130,7 @@ $('#ipsumForm').submit(function(event) {
 ///USER GENERATOR
 /////////////////
 
-function userIpsum(arrKey, paragraphs) {
-  var totalOutput = "";
-  var i;
-  for (i = 0; i < paragraphs; i++) {
-    output = "<p>";
-    var firstWord = true;
-    while (output.length < randoRange(320, 550)) {
-      if (punctuationFlag) {
-      output += capitalizeFirstLetter(userBanks[arrKey].randBankIndex());
-      punctuationFlag = false;
-    } else {
-      if (firstWord) {
-        output += capitalizeFirstLetter(userBanks[arrKey].randBankIndex());
-        firstWord = false;
-      } else {
-        output += userBanks[arrKey].randBankIndex();
-        chanceOfFillerWord(23);
-      }
-    }
-      output += " ";
-      chanceOfPunctuation();
-    }
-    output += userBanks[arrKey].randBankIndex();
-    output += ".</p>";
-    totalOutput += output;
-  }
-  return totalOutput;
-}
+
 
 function updateUserLoader() {
   var userOptionList = "";
