@@ -162,7 +162,12 @@ function themeIdValue() {
 }
 
 function setThemeColor(targetElement) {
-  targetElement.style.backgroundColor = "" + bothBanks()[themeIdValue()].themeColor + "";
+  targetElement.style.backgroundColor = "rgba(" + bothBanks()[themeIdValue()].themeColor + ", 1)";
+}
+
+function setButtonColor(targetElement) {
+  targetElement.style.backgroundColor = "rgba(" + bothBanks()[themeIdValue()].themeColor + ", .28)";
+  targetElement.style.borderColor = "rgb(" + bothBanks()[themeIdValue()].themeColor + ")";
 }
 
 $('#themes').change(function() {
@@ -177,6 +182,9 @@ $('#themes').change(function() {
     $('.hero').html('<img src="' + bothBanks()[themeIdValue()].themePic + '">');
     $(".header-background").each(function() {
       setThemeColor(this);
+    });
+    $("button").each(function() {
+      setButtonColor(this);
     });
   }
 });
