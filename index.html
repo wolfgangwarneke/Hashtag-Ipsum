@@ -18,7 +18,7 @@
       <h2 id="themeDescription">Presidential filler text</h2>
       <h3 id="motto"><em>"Ex rabidus populus verbis"</em></h3>
       <div class="flex-container">
-        <div class="flex-item">
+        <div id="ipsumGENERATOR" class="flex-item">
           <div id="ipsumGenerator">
             <div class="header-background">
               <h3 class="column-title">Choose A Theme</h3>
@@ -32,10 +32,11 @@
               <label for="paragraphs">Paragraphs:</label>
               <input type="range" min="1" max="21" id="paragraphs" name="paragraphs" value="1"><h5 id="rangeValue">1</h5>
               <button type="submit">Get Ipsum!</button>
+              <button type="button" id="makeYourOwn">Make Your Own Ipsum</button>
             </form>
           </div>
         </div>
-        <div class="flex-item hide">
+        <div id="userGENERATOR" class="flex-item hide">
           <div id="userGenerator">
             <div class="header-background">
               <h3 class="column-title">Create Your Own</h3>
@@ -71,6 +72,7 @@
               <label for="nameBank">Choose a name for your Ipsum Generator</label>
               <input type="text" name="nameBank" id="nameBank">
               <button type="submit">Save My Ipsum!</button>
+              <button id="goBack" type="button">Go back</button>
             </form>
           </div>
         </div>

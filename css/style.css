@@ -261,6 +261,10 @@ h2#themeDescription {
 	text-shadow: 1px 1px 4px #999;
 }
 
+#makeYourOwn {
+	float: right;
+}
+
 /*-------------- Media Queries ----------------*/
 @media only screen and (max-width: 1030px ) {
 	.flex-item {
