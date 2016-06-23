@@ -214,6 +214,16 @@ $('#userLoader').submit(function(event) {
     currentUserWordChoice.push(lexicalUnit);
   });
 });
+$('#userDelete').click(function() {
+  if (confirm('Arey you sure you would like to delete this bank?')) {
+    delete userBanks[$('#userLoaderPicker').val()];
+    updateUserLoader();
+    loadThemeMenu();
+    writeCookie();
+    $('#nameBank, #bankDescription').val('');
+    $('#stagingArea ul').empty();
+  }
+});
 $('#addWords').submit(function(event) {
   event.preventDefault();
   if ($('#wordAdd').val() !== '') {
