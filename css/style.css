@@ -42,43 +42,24 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/*end reset*/
-
-
-
-
+/*----------------------------------end reset--------------------------------*/
 html {
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   line-height: 1.25;
   color: #2f2f2f;
 }
-
-#nameDisplay {
-	font-family: 'Bungee Shade', sans-serif;
-	text-align: center;
-  font-size: 100px;
-  margin-top: 15px;
-  margin-bottom: 0px;
+.hero img{
+  width: 100%;
+  margin: -8px;
 }
-
-#themeDescription {
-	font-family: 'Bungee', cursive;
-	text-align: center;
-	font-size: 35px;
-	margin-top:10px;
-	margin-bottom: 30px;
-}
-
 .header-background {
   margin: -15px;
 	background: black;
 }
-
 h3.column-title{
   font-size: 48px;
   color: white;
@@ -86,29 +67,81 @@ h3.column-title{
   padding: 10px;
   text-align: center;
 }
-
-#TrumpSum h1 {
-	font-family: 'Bungee Shade', sans-serif;
+button {
+	border: 1px solid #000;
+	border-radius: 5px;
+	background-color: #fff;
+	padding: 7px 10px;
+	font-size: 16px;
 }
-
-#TrumpSum h2, h3, h4, h5, h6 {
-  font-family: 'Bungee', cursive;
+select {
+	font-size: 16px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+.flex-item {
+  padding: 15px;
+  width: 50%;
+	min-width: 500px;
+  margin-top: 10px;
+}
+.container {
+  max-width: 1100px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+selet, input {
+  font-size: 18px;
+}
+label {
+  display: block;
+	margin-bottom: 7px;
+	margin-top: 15px;
+}
+p {
+  margin-bottom: 10px;
+}
+h2, h3, h4, h5, h6 {
+	font-family: 'Bungee', cursive;
+}
+/*----------------------------------Themes--------------------------------*/
+h1#nameDisplay {
+	font-family: 'Bungee Shade', sans-serif;
+	text-align: center;
+  font-size: 100px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+h2#themeDescription {
+	text-align: center;
+	font-size: 35px;
+	margin-top:10px;
+	margin-bottom: 30px;
 }
 #TrumpSum button {
 	border: 1px solid #ff533c;
-	border-radius: 5px;
 	background-color: #fcecbe;
-	padding: 7px 10px;
 }
 #TrumpSum .header-background{
 	background: #ff533c;
 }
 #TrumpSum h3.column-title{
-  font-size: 48px;
   color: rgb(252, 236, 190);
-  margin-bottom: 30px;
-  padding: 10px;
-  text-align: center;
 }
 #TrumpSum #ipsumOutput h3 {
   color: rgb(214, 115, 83);
@@ -116,16 +149,10 @@ h3.column-title{
 #Bi-Winning-Ipsum button {
 	color: #2c4897;
 	border: 1px solid #2c4897;
-	border-radius: 5px;
 	background-color: rgba(127, 160, 255, 0.13);
-	padding: 7px 10px;
 }
 #Bi-Winning-Ipsum h3.column-title{
-  font-size: 48px;
 	color: rgb(243, 206, 178);
-  margin-bottom: 30px;
-  padding: 10px;
-  text-align: center;
 }
 #Bi-Winning-Ipsum .header-background {
 	background: #2c4897;
@@ -136,16 +163,10 @@ h3.column-title{
 #YeezIpsum button {
 	border: 1px solid #fc3768;
 	color: #fc3768;
-	border-radius: 5px;
 	background-color: rgba(255, 252, 77, 0.28);
-	padding: 7px 10px;
 }
 #YeezIpsum h3.column-title{
-  font-size: 48px;
   color: rgb(255, 252, 77);
-  margin-bottom: 30px;
-  padding: 10px;
-  text-align: center;
 }
 #YeezIpsum .header-background {
 	background: #fc3768;
@@ -154,134 +175,49 @@ h3.column-title{
   color: #fc3768;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/*.row {
-    margin-right: -15px;
-    margin-left: -15px;
-}*/
-/*.row:after {
-  clear: both;
-}*/
-/*.col-6 {
-  width: 50%;
-  float:left;
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.col-12 {
-  width: 100%;
-  float:left;
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}*/
-
-
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-.flex-item {
-  padding: 5px;
-  width: 500px;
-
-  margin-top: 10px;
-}
-
-
-.container {
-  max-width: 1100px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-selet, input {
-  font-size: 18px;
-}
-
-label {
-  display: block;
-	margin-bottom: 7px;
-	margin-top: 15px;
-}
-
-p {
-  margin-bottom: 10px;
-}
-
 #themeDescription p {
   font-size: 1.3em;
   font-family: 'Bungee', cursive;
 }
-
 #ipsumGenerator, #userGenerator {
   border: 1px solid #d6d6d6;
- padding: 15px;
+ 	padding: 15px;
 }
-
-.hero img{
-  width: 100%;
-  margin: -8px;
-}
-
 #ipsumOutput {
   margin-top: 20px;
+	margin-bottom: 40px;
 }
-
 #ipsumOutput h3 {
   text-align: center;
   font-size: 2em;
 }
-
 #oneWord {
   margin-bottom: 30px;
 }
-
-.bottomMargin {
-  margin-bottom: 30px;
-}
-
 #stagingArea {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-
 #stagingArea ul {
     list-style-image: url('../img/wall.png');
 		list-style-position: inside;
 }
-
 #stagingArea ul li:hover {
 		cursor: crosshair;
     list-style-image: url('../img/target.png');
 		list-style-position: inside;
 }
-
 #motto {
 	text-align: center;
 	font-family: serif;
 }
 
-/*font-family: 'Bungee Shade', cursive;
-font-family: 'Bungee', cursive;
-font-family: 'Gravitas One', cursive;
-font-family: 'Alfa Slab One', cursive;*/
+/*-------------- Media Queries ----------------*/
+@media only screen and (max-width: 1030px ) {
+	.flex-item {
+	  padding: 15px;
+	  width: 80%;
+		min-width: 500px;
+	  margin-top: 10px;
+	}
+}
