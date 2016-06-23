@@ -48,6 +48,9 @@ stockBanks['TrumpSum'] = new Theme('TrumpSum', 'Donald Trump,little hands,Wall S
 stockBanks['YeezIpsum'] = new Theme('YeezIpsum', 'Kanye West,Yeezus,the life of Pablo,create art,dark twisted fantasy,my beautiful,Kardashians,Kim,watch the throne,emotional over fonts,Wicked is my story,fur pillows,hobo couture,leatherpants,mic drop,king,lamborgini mercy,bank-rupt,motorcycle,Imma let you finish', 'The Ipsum of a Generation');
 
 stockBanks['Bi-Winning-Ipsum'] = new Theme('Bi-Winning-Ipsum', 'Charlie Sheen,winning,I am on a drug called Charlie Sheen,rock star from Mars,rolling out Magic,bro,sober,dying is for fools,I\'m not dangerous insane,boom,Vatican assassin warlocks,seven gram rocks,party,partying,drinking,breakfast,heavy drinking,bi-winning,duh,I\'m still alive,breakfast martini', 'Boom. Winning Ipsum. Duh!');
+
+var normalIpsum = "";
+
 /////////////////////////////
 /////////////////////////////
 
