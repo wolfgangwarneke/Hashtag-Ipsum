@@ -66,11 +66,12 @@ function bothBanks() {
   return bothBanks;
 }
 
-function Theme(name, words, description) {
+function Theme(name, words, description, themePic) {
   this.bankIndex = stockBanks.length;
   this.name = name;
   this.bank = words.split(',');
   this.description = description;
+  this.themePic = themePic;
 }
 
 Theme.prototype.randBankIndex = function() {
@@ -165,8 +166,10 @@ $('#themes').change(function() {
   $('body').attr('id', bothBanks()[themeIdValue()].name);
   if (bothBanks()[themeIdValue()].name === 'YeezIpsum') {
     $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.jpg">');
-  } else {
+  } else if (bothBanks()[themeIdValue()].name === 'TrumpSum' || bothBanks()[themeIdValue()].name === 'Bi-Winning-Ipsum') {
     $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.png">');
+  } else {
+    $('.hero').html('<img src="' + bothBanks()[themeIdValue()].themePic + '">')
   }
 });
 
@@ -193,9 +196,10 @@ function updateUserLoader() {
 $('#saveUserBank').submit(function(event) {
   event.preventDefault();
   var userBankDescription = $('#bankDescription').val();
+  var userBankThemePic = $('#bankThemePic').val();
   var userBankName = $('#nameBank').val();
-  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), userBankDescription);
-  $('#nameBank, #bankDescription').val('');
+  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), userBankDescription, userBankThemePic);
+  $('#nameBank, #bankDescription, #bankThemePic').val('');
   updateUserLoader();
   loadThemeMenu();
   writeCookie();
