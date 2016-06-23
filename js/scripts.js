@@ -58,6 +58,7 @@ function fontChanger() {
 
 }
 
+
 function bothBanks() {
   var bothBanks = {};
   for (var key in stockBanks) {
@@ -154,6 +155,20 @@ function ipsum(objKey, paragraphs) {
   return totalOutput;
 }
 
+function makeItRED() {
+  $('#ipsumGenerator .header-background h3').attr('id', 'makeItRED');
+  function colorsteps(id, milliseconds) {
+    setTimeout(function(){
+      $('#ipsumGenerator .header-background h3').attr('id', id);
+    },milliseconds);
+  }
+  colorsteps('makeItLESSred', 0050);
+  colorsteps('evenLESS', 2000);
+  colorsteps('littleMore', 2100);
+  colorsteps('thereYouGo', 2200);
+  colorsteps('OVER', 2300);
+}
+
 /////////////////////////////
 //////// *on page load* /////
 
@@ -224,15 +239,35 @@ $('#themes').change(function() {
 });
 
 $('#oneWord').on('click', function() {
-  output = bothBanks()[themeIdValue()].randBankIndex();
-  $('#ipsumOutput').html('<h3>' + output + '</h3>');
+  if ($('#themes').val()) {
+    output = bothBanks()[themeIdValue()].randBankIndex();
+    $('#ipsumOutput').html('<h3>' + output + '</h3>');
+  } else {
+    makeItRED();
+  }
 });
 
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
-  $('#ipsumOutput').html(ipsum(themeIdValue(), parseInt($('#paragraphs').val())));
-  $('#copyTarget').val(lineBreakCopyExperiment());
+  if ($('#themes').val()) {
+    $('#ipsumOutput').html(ipsum(themeIdValue(), parseInt($('#paragraphs').val())));
+    $('#copyTarget').val(lineBreakCopyExperiment());
+  } else {
+    makeItRED();
+  }
 });
+
+$('#paragraphs').change(function() {
+  $('#rangeValue').text($('#paragraphs').val());
+});
+
+$('#paragraphs').mousedown(function() {
+  $('#rangeValue').text($('#paragraphs').val());
+  $('#paragraphs').mousemove(function() {
+    $('#rangeValue').text($('#paragraphs').val());
+  });
+});
+
 
 ///USER GENERATOR
 

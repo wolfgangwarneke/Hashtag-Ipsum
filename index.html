@@ -30,7 +30,7 @@
               <label for="oneWord">One Word/Phrase:</label>
               <button id="oneWord" type="button">Get Ipsum!</button>
               <label for="paragraphs">Paragraphs:</label>
-              <input type="number" min="1" id="paragraphs" name="paragraphs">
+              <input type="range" min="1" max="21" id="paragraphs" name="paragraphs" value="1"><h5 id="rangeValue">1</h5>
               <button type="submit">Get Ipsum!</button>
             </form>
           </div>
@@ -86,6 +86,7 @@
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>

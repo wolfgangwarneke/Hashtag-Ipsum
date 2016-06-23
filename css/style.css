@@ -199,9 +199,6 @@ h2#themeDescription {
   text-align: center;
   font-size: 2em;
 }
-#oneWord {
-  margin-bottom: 30px;
-}
 #stagingArea {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -239,6 +236,30 @@ h2#themeDescription {
 	display: hidden;
 }
 
+#makeItRED {
+	color: rgba(256, 34, 49, 1);
+	text-shadow: 1px 1px 20px #999;
+}
+
+#makeItLESSred {
+	color: rgba(256, 34, 49, .8);
+	text-shadow: 1px 1px 16px #999;
+}
+
+#evenLESS {
+	color: rgba(256, 34, 49, .6);
+	text-shadow: 1px 1px 10px #999;
+}
+
+#littleMore {
+	color: rgba(256, 34, 49, .4);
+	text-shadow: 1px 1px 8px #999;
+}
+
+#thereYouGo {
+	color: rgba(256, 34, 49, .2);
+	text-shadow: 1px 1px 4px #999;
+}
 
 /*-------------- Media Queries ----------------*/
 @media only screen and (max-width: 1030px ) {
