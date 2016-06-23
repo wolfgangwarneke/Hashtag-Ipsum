@@ -207,9 +207,28 @@ h2#themeDescription {
     list-style-image: url('../img/target.png');
 		list-style-position: inside;
 }
+#Bi-Winning-Ipsum #stagingArea ul {
+    list-style-image: url('../img/pill.png');
+		list-style-position: inside;
+}
+#Bi-Winning-Ipsum #stagingArea ul li:hover {
+    list-style-image: url('../img/mallet.png');
+}
+#YeezIpsum #stagingArea ul {
+    list-style-image: url('../img/sun-glasses.png');
+		list-style-position: inside;
+}
+#YeezIpsum #stagingArea ul li:hover {
+    list-style-image: url('../img/thumbs-down-icon.png');
+}
+
 #motto {
 	text-align: center;
 	font-family: serif;
+}
+
+#copyTarget {
+	display: hidden;
 }
 
 /*-------------- Media Queries ----------------*/

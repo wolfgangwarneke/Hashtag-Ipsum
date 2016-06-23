@@ -170,14 +170,28 @@ function setButtonColor(targetElement) {
   targetElement.style.borderColor = "rgb(" + bothBanks()[themeIdValue()].themeColor + ")";
 }
 
-$('#themes').change(function() {
+function onChangeMainLoader() {
   $('#themeDescription').text(bothBanks()[themeIdValue()].description);
   $('#nameDisplay').text(bothBanks()[themeIdValue()].name);
   $('body').attr('id', bothBanks()[themeIdValue()].name);
   if (bothBanks()[themeIdValue()].name === 'YeezIpsum') {
     $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.jpg">');
+    $(".header-background").each(function() {
+      $(this).css('backgroundColor', '');
+    });
+    $("button").each(function() {
+      $(this).css('backgroundColor', '');
+      $(this).css('borderColor', '');
+    });
   } else if (bothBanks()[themeIdValue()].name === 'TrumpSum' || bothBanks()[themeIdValue()].name === 'Bi-Winning-Ipsum') {
     $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.png">');
+    $(".header-background").each(function() {
+      $(this).css('backgroundColor', '');
+    });
+    $("button").each(function() {
+      $(this).css('backgroundColor', '');
+      $(this).css('borderColor', '');
+    });
   } else {
     $('.hero').html('<img src="' + bothBanks()[themeIdValue()].themePic + '">');
     $(".header-background").each(function() {
@@ -187,6 +201,23 @@ $('#themes').change(function() {
       setButtonColor(this);
     });
   }
+}
+
+function lineBreakCopyExperiment() {
+  var output = "";
+  var i = 0;
+  $('#ipsumOutput p').each(function(thing) {
+    output += $('#ipsumOutput p').eq(i).text();
+    output += "\n";
+    i++;
+  });
+  return output;
+}
+
+
+
+$('#themes').change(function() {
+  onChangeMainLoader();
 });
 
 $('#oneWord').on('click', function() {
@@ -197,6 +228,7 @@ $('#oneWord').on('click', function() {
 $('#ipsumForm').submit(function(event) {
   event.preventDefault();
   $('#ipsumOutput').html(ipsum(themeIdValue(), parseInt($('#paragraphs').val())));
+  $('#copyTarget').val(lineBreakCopyExperiment());
 });
 
 ///USER GENERATOR
@@ -222,6 +254,8 @@ $('#saveUserBank').submit(function(event) {
   writeCookie();
   $('#stagingArea ul').empty();
   currentUserWordChoice = [];
+  $('#themes').val(userBankName);
+  onChangeMainLoader();
 });
 $('#userLoader').submit(function(event) {
   event.preventDefault();
@@ -257,3 +291,57 @@ $('#stagingArea ul').on('click', 'li', function() {
   currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
   $(this).remove();
 });
+
+document.getElementById("copyButton").addEventListener("click", function() {
+    copyToClipboard(document.getElementById("copyTarget"));
+});
+
+function copyToClipboard(elem) {
+	  // create hidden text element, if it doesn't already exist
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        // can just use the original source element for the selection and copy
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        // must use a temporary form element for the selection and copy
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    // select the content
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+
+    // copy the selection
+    var succeed;
+    try {
+    	  succeed = document.execCommand("copy");
+    } catch(e) {
+        succeed = false;
+    }
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+
+    if (isInput) {
+        // restore prior selection
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        // clear temporary content
+        target.textContent = "";
+    }
+    return succeed;
+}
