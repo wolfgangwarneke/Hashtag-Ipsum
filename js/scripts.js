@@ -66,12 +66,13 @@ function bothBanks() {
   return bothBanks;
 }
 
-function Theme(name, words, description, themePic) {
+function Theme(name, words, description, themePic, themeColor) {
   this.bankIndex = stockBanks.length;
   this.name = name;
   this.bank = words.split(',');
   this.description = description;
   this.themePic = themePic;
+  this.themeColor = themeColor;
 }
 
 Theme.prototype.randBankIndex = function() {
@@ -160,6 +161,10 @@ function themeIdValue() {
   return $('#themes').val();
 }
 
+function setThemeColor(targetElement) {
+  targetElement.style.backgroundColor = "" + bothBanks()[themeIdValue()].themeColor + "";
+}
+
 $('#themes').change(function() {
   $('#themeDescription').text(bothBanks()[themeIdValue()].description);
   $('#nameDisplay').text(bothBanks()[themeIdValue()].name);
@@ -169,7 +174,10 @@ $('#themes').change(function() {
   } else if (bothBanks()[themeIdValue()].name === 'TrumpSum' || bothBanks()[themeIdValue()].name === 'Bi-Winning-Ipsum') {
     $('.hero').html('<img src="img/' + bothBanks()[themeIdValue()].name + '.png">');
   } else {
-    $('.hero').html('<img src="' + bothBanks()[themeIdValue()].themePic + '">')
+    $('.hero').html('<img src="' + bothBanks()[themeIdValue()].themePic + '">');
+    $(".header-background").each(function() {
+      setThemeColor(this);
+    });
   }
 });
 
@@ -197,9 +205,10 @@ $('#saveUserBank').submit(function(event) {
   event.preventDefault();
   var userBankDescription = $('#bankDescription').val();
   var userBankThemePic = $('#bankThemePic').val();
+  var userBankThemeColor = $('#bankThemeColor').val();
   var userBankName = $('#nameBank').val();
-  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), userBankDescription, userBankThemePic);
-  $('#nameBank, #bankDescription, #bankThemePic').val('');
+  userBanks[userBankName] = new Theme(userBankName, currentUserWordChoice.join(), userBankDescription, userBankThemePic, userBankThemeColor);
+  $('#nameBank, #bankDescription, #bankThemePic, #bankThemeColor').val('');
   updateUserLoader();
   loadThemeMenu();
   writeCookie();
