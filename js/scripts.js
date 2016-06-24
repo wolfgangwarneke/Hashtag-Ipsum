@@ -167,6 +167,7 @@ function makeItRED() {
   colorsteps('littleMore', 2100);
   colorsteps('thereYouGo', 2200);
   colorsteps('OVER', 2300);
+  $('#themes').focus();
 }
 
 /////////////////////////////
@@ -339,6 +340,8 @@ $('#stagingArea ul').on('click', 'li', function() {
   currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
   $(this).remove();
 });
+
+/////// Text copy button functionality
 
 document.getElementById("copyButton").addEventListener("click", function() {
     copyToClipboard(document.getElementById("copyTarget"));
