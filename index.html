@@ -23,18 +23,28 @@
             <div class="header-background">
               <h3 class="column-title">Choose A Theme</h3>
             </div>
-            <form id="ipsumForm">
-              <label for="theme">Themes:</label>
-              <select id="themes" name="theme">
-              </select>
-              <label for="oneWord">One Word/Phrase:</label>
-              <button id="oneWord" type="button">Get Ipsum!</button>
-              <label for="paragraphs">Paragraphs:</label>
-              <input type="range" min="1" max="21" id="paragraphs" name="paragraphs" value="1"><h5 id="rangeValue">1</h5>
-              <button type="submit">Get Ipsum!</button>
-              <button type="button" id="makeYourOwn">Make Your Own Ipsum</button>
-            </form>
+            <div class="generatorDIV">
+              <form id="ipsumForm">
+                <label for="theme">Themes:</label>
+                <select id="themes" name="theme">
+                </select>
+                <label for="oneWord">One Word/Phrase:</label>
+                <button id="oneWord" type="button">Go solo.</button>
+                <label for="paragraphs">Paragraphs:</label>
+                <input type="range" min="1" max="21" id="paragraphs" name="paragraphs" value="1"><h5 id="rangeValue">1</h5>
+                <button type="submit" id="importantButton">Get Ipsum!</button>
+              </form>
+            </div>
+            <div id='ipsumGeneratorRightCol' class='generatorDIV'>
+              <p>
+                Why bother with broken Latin babble when you can get filler text inspired by some of the best purveyors of spew out there in the game right now?
+              </p>
+              <p>
+                Don't care to stroke anyone's ego, but your own?  Let's make this about YOU. Check out <a href="#" id="makeYourOwn">Make Your Own Ipsum Generator</a>.
+              </p>
+            </div>
           </div>
+
         </div>
         <div id="userGENERATOR" class="flex-item hide">
           <div id="userGenerator">

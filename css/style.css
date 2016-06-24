@@ -263,11 +263,24 @@ h2#themeDescription {
 	text-shadow: 1px 1px 4px #999;
 }
 
-#makeYourOwn {
-	float: right;
+#importantButton {
 	font-family: "Bungee";
+	display: block;
+	margin: 5px;
 }
 
+.generatorDIV {
+	width: 50%;
+	display: inline-block;
+}
+
+#ipsumGeneratorRightCol {
+	float: right;
+}
+
+#paragraphs, #rangeValue {
+	display: inline;
+}
 
 /*-------------- Media Queries ----------------*/
 @media only screen and (max-width: 1030px ) {
