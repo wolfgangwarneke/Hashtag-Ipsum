@@ -230,6 +230,10 @@ h2#themeDescription {
 #stagingArea {
 	margin-top: 20px;
 	margin-bottom: 20px;
+	width: 35%;
+	min-width: 100px;
+	max-height: 180px;
+	overflow-x: auto;
 }
 #stagingArea ul {
     list-style-image: url('../img/wall.png');
