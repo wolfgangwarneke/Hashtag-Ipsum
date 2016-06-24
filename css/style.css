@@ -58,7 +58,7 @@ body {
 }
 .header-background {
   margin: -15px;
-	background: black;
+	background: rgba(42, 51, 56, 1);
 }
 h3.column-title{
   font-size: 48px;
@@ -75,9 +75,16 @@ button {
 	font-size: 16px;
 	box-shadow: 2px 2px 2px rgba(130,130,130,.6);
 }
+button:hover {
+	cursor: pointer;
+	box-shadow: 3px 3px 3px rgba(128,128,128,.58);
+}
 select {
 	font-size: 16px;
 	box-shadow: 2px 2px 3px rgba(130,130,130,.5);
+}
+select:hover {
+	cursor: pointer;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -116,12 +123,21 @@ label {
   display: block;
 	margin-bottom: 7px;
 	margin-top: 15px;
+	font-size: 15px;
 }
 p {
   margin-bottom: 10px;
 }
 h2, h3, h4, h5, h6 {
 	font-family: 'Bungee', cursive;
+	color:rgba(42, 51, 56, 1);
+}
+a {
+	color: rgba(42, 51, 56, .95);
+}
+a:hover {
+	cursor: pointer;
+	text-shadow: 1.5px 1.5px 3px rgba(42, 51, 56, .15);
 }
 .hide {
 	display: none;
@@ -143,6 +159,13 @@ h2#themeDescription {
 	font-size: 35px;
 	margin-top:10px;
 	margin-bottom: 30px;
+}
+#makeYourOwn h4 {
+	text-shadow: 1.5px 1.5px 3px rgba(42, 51, 56, .125);
+}
+#makeYourOwn h4:hover {
+	cursor: pointer;
+	text-shadow: 1.5px 1.5px 3px rgba(200, 202, 179, .85);
 }
 #TrumpSum button {
 	border: 1px solid #ff533c;
@@ -185,7 +208,12 @@ h2#themeDescription {
 #YeezIpsum #ipsumOutput h3 {
   color: #fc3768;
 }
-
+#ipsumForm {
+	position: relative;
+}
+#ipsumForm button {
+	font-family: 'Bungee', sans-serif;
+}
 #themeDescription p {
   font-size: 1.3em;
   font-family: 'Bungee', cursive;
@@ -264,8 +292,9 @@ h2#themeDescription {
 }
 
 #makeYourOwn {
-	float: right;
-	font-family: "Bungee";
+	position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 
