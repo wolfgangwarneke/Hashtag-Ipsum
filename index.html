@@ -21,7 +21,7 @@
         <img src="img/egokitty.png">
       </div>
       <h1 id='nameDisplay'>Ego Ipsum</h1>
-      <h2 id="themeDescription">Presidential filler text</h2>
+      <h2 id="themeDescription">Vainglorious filler text</h2>
       <h3 id="motto"><em>"Ex rabidus populus verbis"</em></h3>
       <div class="flex-container">
         <div id="ipsumGENERATOR" class="flex-item">
@@ -29,19 +29,26 @@
             <div class="header-background">
               <h3 class="column-title">Choose A Theme</h3>
             </div>
-            <form id="ipsumForm">
-              <label for="theme">Themes:</label>
-              <select id="themes" name="theme">
-              </select>
-              <label for="oneWord">One Word/Phrase:</label>
-              <button id="oneWord" type="button">Get Ipsum!</button>
-              <label for="paragraphs">Paragraphs:</label>
-              <input type="range" min="1" max="21" id="paragraphs" name="paragraphs" value="1"><h5 id="rangeValue">1</h5>
-              <button type="submit">Get Ipsum!</button>
-              <div id="makeYourOwn">
-                <h4 >Create Your Own Theme</h4>
-              </div>
-            </form>
+            <div class="generatorDIV">
+              <form id="ipsumForm">
+                <label for="theme">Themes:</label>
+                <select id="themes" name="theme">
+                </select>
+                <label for="oneWord">One Word/Phrase:</label>
+                <button id="oneWord" type="button">Go solo.</button>
+                <label for="paragraphs">Paragraphs:</label>
+                <input type="range" min="1" max="21" id="paragraphs" name="paragraphs" value="1"><h5 id="rangeValue">1</h5>
+                <button type="submit" id="importantButton">Get Ipsum!</button>
+              </form>
+            </div>
+            <div id='ipsumGeneratorRightCol' class='generatorDIV'>
+              <p>
+                Don't bother with broken Latin babble when you can get filler text inspired by some of the best purveyors of spew out there in the game right now.
+              </p>
+              <p>
+                Don't care to stroke anyone's ego, but your own?  Let's make this about YOU. Check out <a href="#" id="makeYourOwn">Make Your Own Ipsum Generator</a>.
+              </p>
+            </div>
           </div>
         </div>
         <div id="userGENERATOR" class="flex-item hide">
@@ -84,14 +91,14 @@
             </form>
           </div>
         </div>
-        <div class="flex-item">
+        <div class="flex-item" id="ipsumOUTPUT">
           <div class="header-background">
             <h3 class="column-title">Ipsum</h3>
           </div>
           <div id="ipsumOutput">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
-          <textarea id="copyTarget" value="Text to Copy"></textarea><button id="copyButton">Copy</button>
+          <textarea id="copyTarget" value="Text to Copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea><button id="copyButton">Copy</button>
         </div>
       </div>
     </div>

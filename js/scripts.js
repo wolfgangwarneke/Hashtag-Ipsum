@@ -167,6 +167,7 @@ function makeItRED() {
   colorsteps('littleMore', 2100);
   colorsteps('thereYouGo', 2200);
   colorsteps('OVER', 2300);
+  $('#themes').focus();
 }
 
 /////////////////////////////
@@ -219,6 +220,7 @@ function onChangeMainLoader() {
       setButtonColor(this);
     });
   }
+  $('#ipsumOutput').html('<p>What are you waiting for?  Go get some Ipsum.</p>');
 }
 
 function lineBreakCopyExperiment() {
@@ -270,12 +272,12 @@ $('#paragraphs').mousedown(function() {
 
 
 $('#makeYourOwn').click(function() {
-  $('#ipsumGENERATOR').addClass('hide');
+  $('#ipsumGENERATOR, #ipsumOUTPUT').addClass('hide');
   $('#userGENERATOR').removeClass('hide');
 });
 
 $('#goBack').click(function() {
-  $('#ipsumGENERATOR').removeClass('hide');
+  $('#ipsumGENERATOR, #ipsumOUTPUT').removeClass('hide');
   $('#userGENERATOR').addClass('hide');
 });
 
@@ -339,6 +341,8 @@ $('#stagingArea ul').on('click', 'li', function() {
   currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
   $(this).remove();
 });
+
+/////// Text copy button functionality
 
 document.getElementById("copyButton").addEventListener("click", function() {
     copyToClipboard(document.getElementById("copyTarget"));
