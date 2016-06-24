@@ -272,12 +272,12 @@ $('#paragraphs').mousedown(function() {
 
 
 $('#makeYourOwn').click(function() {
-  $('#ipsumGENERATOR').addClass('hide');
+  $('#ipsumGENERATOR, #ipsumOUTPUT').addClass('hide');
   $('#userGENERATOR').removeClass('hide');
 });
 
 $('#goBack').click(function() {
-  $('#ipsumGENERATOR').removeClass('hide');
+  $('#ipsumGENERATOR, #ipsumOUTPUT').removeClass('hide');
   $('#userGENERATOR').addClass('hide');
 });
 
