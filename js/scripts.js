@@ -234,6 +234,15 @@ function lineBreakCopyExperiment() {
   return output;
 }
 
+function addTags() {
+  $('#addTags').off();
+  $('#addTags').one('click', function() {
+    for (i = 0; i < $("#ipsumOutput > p").length; i++) {
+      $('#ipsumOutput p:EQ(' + i + ')').text("<p>" + $('#ipsumOutput p:EQ(' + i + ')').text() + "</p>");
+    }
+  });
+
+}
 
 
 $('#themes').change(function() {
@@ -254,6 +263,7 @@ $('#ipsumForm').submit(function(event) {
   if ($('#themes').val()) {
     $('#ipsumOutput').html(ipsum(themeIdValue(), parseInt($('#paragraphs').val())));
     $('#copyTarget').val(lineBreakCopyExperiment());
+    addTags();
   } else {
     makeItRED();
   }
@@ -274,6 +284,12 @@ $('#paragraphs').mousedown(function() {
 $('#makeYourOwn').click(function() {
   $('#ipsumGENERATOR, #ipsumOUTPUT').addClass('hide');
   $('#userGENERATOR').removeClass('hide');
+});
+
+$('#addTags').on('click', function() {
+  for (i = 0; i < $("#ipsumOutput > p").length; i++) {
+    $('#ipsumOutput p:EQ(' + i + ')').text("<p>" + $('#ipsumOutput p:EQ(' + i + ')').text() + "</p>");
+  }
 });
 
 ///USER GENERATOR

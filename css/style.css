@@ -333,6 +333,16 @@ h2#themeDescription {
 	margin-left: 6px;
 }
 
+#addTags {
+	cursor: pointer;
+	font-style: italic;
+	font-size: 0.9rem;
+	margin-left: 10px;
+	color: #777;
+	border: 1px dashed #aaa;
+	padding: 2px 5px;
+}
+
 /*-------------- Media Queries ----------------*/
 @media only screen and (max-width: 1030px ) {
 	.flex-item {
