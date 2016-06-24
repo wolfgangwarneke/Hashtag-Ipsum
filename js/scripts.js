@@ -276,11 +276,6 @@ $('#makeYourOwn').click(function() {
   $('#userGENERATOR').removeClass('hide');
 });
 
-$('#goBack').click(function() {
-  $('#ipsumGENERATOR, #ipsumOUTPUT').removeClass('hide');
-  $('#userGENERATOR').addClass('hide');
-});
-
 ///USER GENERATOR
 
 function updateUserLoader() {
@@ -306,6 +301,8 @@ $('#saveUserBank').submit(function(event) {
   currentUserWordChoice = [];
   $('#themes').val(userBankName);
   onChangeMainLoader();
+  $('#ipsumGENERATOR, #ipsumOUTPUT').removeClass('hide');
+  $('#userGENERATOR').addClass('hide');
 });
 $('#userLoader').submit(function(event) {
   event.preventDefault();
@@ -341,6 +338,18 @@ $('#stagingArea ul').on('click', 'li', function() {
   currentUserWordChoice.splice(currentUserWordChoice.indexOf($(this).text()), 1);
   $(this).remove();
 });
+
+$('#goBack').click(function() {
+  $('#ipsumGENERATOR, #ipsumOUTPUT').removeClass('hide');
+  $('#userGENERATOR').addClass('hide');
+});
+
+$( "button[type='reset']" ).click(function() {
+  $('#stagingArea ul').empty();
+  currentUserWordChoice = [];
+  $('#wordAdd').focus();
+});
+
 
 /////// Text copy button functionality
 
