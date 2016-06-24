@@ -116,7 +116,7 @@ select:hover {
   margin-right: auto;
   margin-left: auto;
 }
-selet, input {
+input {
   font-size: 18px;
 }
 label {
@@ -211,9 +211,7 @@ h2#themeDescription {
 #ipsumForm {
 	position: relative;
 }
-#ipsumForm button {
-	font-family: 'Bungee', sans-serif;
-}
+
 #themeDescription p {
   font-size: 1.3em;
   font-family: 'Bungee', cursive;
