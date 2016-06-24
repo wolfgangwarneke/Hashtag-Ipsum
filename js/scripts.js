@@ -220,6 +220,7 @@ function onChangeMainLoader() {
       setButtonColor(this);
     });
   }
+  $('#ipsumOutput').html('<p>What are you waiting for?  Go get some Ipsum.</p>');
 }
 
 function lineBreakCopyExperiment() {
