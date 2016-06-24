@@ -233,13 +233,22 @@ h2#themeDescription {
 	width: 35%;
 	min-width: 100px;
 	max-height: 180px;
-	overflow-x: auto;
+	overflow: auto;
 }
 #stagingArea ul {
-    list-style-image: url('../img/wall.png');
+    list-style-image: url('../img/whitecat.png');
 		list-style-position: inside;
 }
 #stagingArea ul li:hover {
+		cursor: crosshair;
+    list-style-image: url('../img/blackcat.png');
+		list-style-position: inside;
+}
+#TrumpSum #stagingArea ul {
+    list-style-image: url('../img/wall.png');
+		list-style-position: inside;
+}
+#TrumpSum #stagingArea ul li:hover {
 		cursor: crosshair;
     list-style-image: url('../img/target.png');
 		list-style-position: inside;
@@ -294,7 +303,11 @@ h2#themeDescription {
 }
 
 #makeYourOwn {
-	color: rgba(256, 34, 49, 1);
+		color: rgba(80, 80, 222, 1);
+	font-weight: bolder;
+	font-variant: small-caps;
+	font-size: 1.3rem;
+	text-decoration: none;
 }
 
 #importantButton {
@@ -314,6 +327,10 @@ h2#themeDescription {
 
 #paragraphs, #rangeValue {
 	display: inline;
+}
+
+#rangeValue {
+	margin-left: 6px;
 }
 
 /*-------------- Media Queries ----------------*/
